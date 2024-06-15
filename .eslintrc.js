@@ -16,6 +16,7 @@ module.exports = {
     rules: {
       'no-console': 0,
       'comma-dangle': [2, 'always-multiline'],
+      'quotes': [2, 'single', { 'avoidEscape': true }],
       '@typescript-eslint/interface-name-prefix': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',

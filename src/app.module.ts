@@ -19,6 +19,7 @@ import { RequestContextModule } from 'nestjs-request-context'
     //   imports: [ConfigModule],
     //   inject: [ConfigService],
     //   useFactory: async (config: ConfigService) => ({
+    //     uri: config.get<string>('mongoose.url'),
     //     ...config.get<MongooseModuleOptions>('mongoose.options'),
     //   }),
     // }),
