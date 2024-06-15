@@ -1,7 +1,8 @@
 import { ApiProperty, PartialType } from "@nestjs/swagger"
-import { IsArray, IsMongoId, IsOptional, IsString, ValidateNested } from "class-validator"
+import { IsArray, IsEnum, IsMongoId, IsOptional, IsString, ValidateNested } from "class-validator"
 import { ItemParentsPartDto } from "./_parts/item-parents.part.dto"
 import { Type } from "class-transformer"
+import { RarityEnum, RarityList } from "../_enums/rarity.enum"
 
 export class AddonCreateDto {
   @IsString()
@@ -12,9 +13,9 @@ export class AddonCreateDto {
   @ApiProperty({ type: String })
   public description?: string
 
-  @IsString()
-  @ApiProperty({ type: String })
-  public ratity?: string
+  @IsEnum(RarityList)
+  @ApiProperty({ type: String, enum: RarityList })
+  public ratity?: RarityEnum
 
   @IsArray()
   @IsOptional()

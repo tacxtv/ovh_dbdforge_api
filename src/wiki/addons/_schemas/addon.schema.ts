@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 import { ItemParentsPart, ItemParentsPartSchema } from "./_parts/item-parents.part.schema"
+import { RarityEnum, RarityList } from "../_enums/rarity.enum"
 
 @Schema({
   versionKey: false,
@@ -16,8 +17,12 @@ export class Addon extends Document {
   @Prop({ type: String })
   public description: string
 
-  @Prop({ type: String })
-  public ratity: string
+  @Prop({
+    type: String,
+    enum: RarityList,
+    default: RarityEnum.COMMON,
+  })
+  public ratity: RarityEnum
 
   @Prop({
     default: [],
