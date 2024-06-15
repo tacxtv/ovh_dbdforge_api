@@ -53,7 +53,7 @@ export default (): ConfigInstance => {
       },
     },
     swagger: {
-      path: '/swagger',
+      path: 'swagger',
       api: '/swagger/json',
       options: {},
     },

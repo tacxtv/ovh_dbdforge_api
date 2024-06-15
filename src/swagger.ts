@@ -18,7 +18,7 @@ export default function swagger(app: NestExpressApplication): void {
     const document = SwaggerModule.createDocument(app, build)
     const theme = new SwaggerTheme()
 
-    SwaggerModule.setup(config.get<string>('swagger.url'), app, document, {
+    SwaggerModule.setup(config.get<string>('swagger.path'), app, document, {
       explorer: true,
       swaggerOptions: {},
       customCss: theme.getBuffer(SwaggerThemeNameEnum.DARK_MONOKAI),
