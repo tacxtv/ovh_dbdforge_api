@@ -1,5 +1,7 @@
 import { Controller, Delete, Get, Patch, Post } from "@nestjs/common"
+import { ApiTags } from "@nestjs/swagger"
 
+@ApiTags('addons')
 @Controller('addons')
 export class AddonsController {
   @Get()
