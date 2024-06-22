@@ -1,12 +1,16 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
-import { ItemParentsPart, ItemParentsPartSchema } from "./_parts/item-parents.part.schema"
+import { AbstractSchema } from "~/_common/_abstracts/abstract.schema"
 import { RarityEnum, RarityList } from "../_enums/rarity.enum"
+import { ItemParentsPart, ItemParentsPartSchema } from "./_parts/item-parents.part.schema"
+import { HydratedDocument } from "mongoose"
+
+export type AddonDocument = HydratedDocument<Addon>
 
 @Schema({
   versionKey: false,
   collection: 'wiki.addons',
 })
-export class Addon extends Document {
+export class Addon extends AbstractSchema {
   @Prop({
     type: String,
     required: true,
