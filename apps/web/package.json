@@ -1,0 +1,39 @@
+{
+  "name": "@tacxtv/ovh_dbdforge_web",
+  "version": "0.0.1",
+  "description": "DBD Forge Project",
+  "repository": "https://github.com/tacxtv/ovh_dbdforge.git",
+  "author": "Tacx <12997062+tacxou@users.noreply.github.com>",
+  "private": true,
+  "scripts": {
+    "start:dev": "nuxt dev"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.11",
+    "openapi-fetch": "^0.10.1",
+    "quasar": "^2.16.4",
+    "radash": "^12.1.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^1.3.6",
+    "@nuxt/eslint-config": "^0.3.13",
+    "@types/node": "^20.14.8",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vue/language-plugin-pug": "^2.0.21",
+    "@vueuse/core": "^10.11.0",
+    "@vueuse/nuxt": "^10.11.0",
+    "eslint": "^9.5.0",
+    "nuxt": "^3.12.2",
+    "nuxt-quasar-ui": "^2.1.3",
+    "openapi-typescript": "^7.0.0",
+    "prettier": "^3.3.2",
+    "sass": "^1.77.6",
+    "typescript": "^5.5.2",
+    "vite-plugin-pug": "^0.3.2",
+    "vue": "^3.4.30",
+    "vue-eslint-parser": "^9.4.3",
+    "vue-router": "^4.4.0",
+    "vue-tsc": "^2.0.21"
+  }
+}
