@@ -7,6 +7,11 @@ DBDFORGE_DEV_REDIS_PORT=6379
 PLATFORM=linux/amd64
 include .env
 
+# %:
+# 	@:
+# Args : $(filter-out $@,$(MAKECMDGOALS))
+# Usage : make testing -- --primary -a -b=1
+
 .DEFAULT_GOAL := help
 help:
 	@printf "\033[33mUsage:\033[0m\n  make [target] [arg=\"val\"...]\n\n\033[33mTargets:\033[0m\n"
@@ -75,3 +80,6 @@ dbs: ## Start the databases
 
 	@docker exec -it $(DBDFORGE_API_CONTAINERNAME)_mongodb \
 		mongosh --eval "rs.initiate({_id: \"rs0\", members: [{_id: 0, host: \"$(DBDFORGE_API_CONTAINERNAME)_mongodb\"}]})" || true
+
+# testing: ## test
+# 	@echo "testing: $(filter-out $@,$(MAKECMDGOALS))"
