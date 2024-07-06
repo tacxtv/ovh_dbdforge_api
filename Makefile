@@ -51,7 +51,7 @@ exec: ## Execute sh process in the running container
 	@docker exec -it $(DBDFORGE_API_CONTAINERNAME) sh
 
 dbs: ## Start the databases
-	@docker volume create $(DBDFORGE_API_CONTAINERNAME)_mongodb
+	@docker volume create $(DBDFORGE_API_CONTAINERNAME)_mongodb || true
 	@docker run -d --rm \
 		--name $(DBDFORGE_API_CONTAINERNAME)_mongodb \
 		-v $(DBDFORGE_API_CONTAINERNAME)_mongodb:/data/db \
@@ -64,9 +64,9 @@ dbs: ## Start the databases
 		--health-start-period=5s \
 		--health-retries=3 \
 		--health-cmd="mongosh --eval \"db.stats().ok\" || exit 1" \
-		mongo:7.0 --wiredTigerCacheSizeGB 1.5 --bind_ip localhost,$(DBDFORGE_API_CONTAINERNAME)_mongodb
+		mongo:7.0 --wiredTigerCacheSizeGB 1.5 --bind_ip localhost,$(DBDFORGE_API_CONTAINERNAME)_mongodb || true
 
-	@docker volume create $(DBDFORGE_API_CONTAINERNAME)_redis
+	@docker volume create $(DBDFORGE_API_CONTAINERNAME)_redis || true
 	@docker run -d --rm \
 		--name $(DBDFORGE_API_CONTAINERNAME)_redis \
 		-v $(DBDFORGE_API_CONTAINERNAME)_redis:/data \
@@ -80,7 +80,7 @@ dbs: ## Start the databases
 		--health-cmd="redis-cli ping || exit 1" \
 		redis:7-alpine
 
-	@docker volume create $(DBDFORGE_API_CONTAINERNAME)_minio
+	@docker volume create $(DBDFORGE_API_CONTAINERNAME)_minio || true
 	@docker run -d --rm \
 		--name $(DBDFORGE_API_CONTAINERNAME)_minio \
 		-p $(DBDFORGE_DEV_MINIO_BASEPORT):9000 \
@@ -90,7 +90,17 @@ dbs: ## Start the databases
 		--network $(DBDFORGE_DEV_NETWORK) \
 		-e "MINIO_ACCESS_KEY=$(DBDFORGE_DEV_MINIO_ACCESSKEY)" \
 		-e "MINIO_SECRET_KEY=$(DBDFORGE_DEV_MINIO_SECRETKEY)" \
-		minio/minio server /data --console-address ":9090"
+		minio/minio server /data --console-address ":9090" || true
+
+# minio: ## Create minio bucket
+# 	docker run -it --rm \
+# 		--network $(DBDFORGE_DEV_NETWORK) \
+# 		-e MINIO_BUCKET="dbdforge" \
+# 		--entrypoint sh minio/mc -c "\
+# 			mc config host add myminio http://ovh_dbdforge_api_minio:9000 \$(DBDFORGE_DEV_MINIO_ACCESSKEY) \$(DBDFORGE_DEV_MINIO_SECRETKEY) && \
+# 			(mc mb myminio/dbdforge || true) && \
+# 			(mc ls || true) \
+# 		" || true
 
 # testing: ## test
 # 	@echo "testing: $(filter-out $@,$(MAKECMDGOALS))"
