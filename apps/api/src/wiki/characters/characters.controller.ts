@@ -13,6 +13,7 @@ import { AbstractController } from "~/_common/_abstracts/abstract.controller"
 export class CharactersController extends AbstractController {
   private readonly projection: PartialProjectionType<Character> = {
     name: 1,
+    slug: 1,
   }
 
   public constructor(private readonly _service: CharactersService) {
@@ -49,11 +50,11 @@ export class CharactersController extends AbstractController {
     })
   }
 
-  @Get(':name')
-  public async readByName(@Res() res: Response, @Param('name') name: string) {
+  @Get(':slug')
+  public async readBySlug(@Res() res: Response, @Param('slug') slug: string) {
     return res.status(HttpStatus.OK).json({
       statusCode: HttpStatus.OK,
-      data: await this._service.findOne({ name }),
+      data: await this._service.findOne({ slug }),
     })
   }
 

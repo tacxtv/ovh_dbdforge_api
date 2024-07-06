@@ -2,6 +2,7 @@ import { CountOptions } from "mongodb"
 import { FilterQuery, Model, MongooseBaseQueryOptions, ProjectionType, QueryOptions, SaveOptions, Types, UpdateQuery } from "mongoose"
 import { AbstractSchema } from "./abstract.schema"
 import { AbstractService, AbstractServiceContext } from "./abstract.service"
+import { NotFoundException } from "@nestjs/common"
 
 export abstract class AbstractServiceSchema<T = AbstractSchema, D = object> extends AbstractService {
   protected abstract _model: Model<T>
@@ -56,7 +57,11 @@ export abstract class AbstractServiceSchema<T = AbstractSchema, D = object> exte
     projection?: ProjectionType<T> | null | undefined,
     options?: QueryOptions<T> | null | undefined,
   ) {
-    return await this._model.findById(_id, projection, options).exec()
+    const data = await this._model.findById(_id, projection, options).exec()
+    if (!data) {
+      throw new NotFoundException()
+    }
+    return data
   }
 
   public async findOne(
@@ -64,7 +69,11 @@ export abstract class AbstractServiceSchema<T = AbstractSchema, D = object> exte
     projection?: ProjectionType<T> | null | undefined,
     options?: QueryOptions<T> | null | undefined,
   ) {
-    return await this._model.findOne(filters, projection, options).exec()
+    const data = await this._model.findOne(filters, projection, options).exec()
+    if (!data) {
+      throw new NotFoundException()
+    }
+    return data
   }
 
   public async update(

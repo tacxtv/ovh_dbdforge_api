@@ -8,6 +8,7 @@ declare const module: any
 AppClusterService.clusterize(async () => {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: new Logger(process.env.npm_package_name),
+    cors: true,
   })
 
   if (process.env.production !== 'production') {
