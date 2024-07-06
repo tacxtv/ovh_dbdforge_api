@@ -1,3 +1,6 @@
+import { defineNuxtConfig } from 'nuxt/config'
+import pugPlugin from 'vite-plugin-pug'
+
 export default defineNuxtConfig({
   ssr: false,
   telemetry: false,
@@ -12,10 +15,28 @@ export default defineNuxtConfig({
     dirs: [{ path: '~/components', prefix: 'q-custom' }],
   },
   modules: [
+    '@nuxt-alt/auth',
+    '@nuxt-alt/http',
+    '@pinia/nuxt',
     'nuxt-quasar-ui',
+    '@vueuse/nuxt',
+    'dayjs-nuxt',
+    '@nuxt/devtools',
   ],
+  http: {
+    debug: process.env.NODE_ENV === 'development',
+    browserBaseURL: process.env.DBDFORGE_API_URL,
+    baseURL: process.env.DBDFORGE_API_URL,
+  },
+  dayjs: {
+    locales: ['fr', 'en'],
+    defaultLocale: 'fr',
+    defaultTimezone: 'Paris',
+    plugins: ['timezone', 'relativeTime'],
+  },
   quasar: {
     iconSet: 'mdi-v7',
+    cssAddon: true,
     config: {
       dark: 'auto',
       brand: {
@@ -30,5 +51,16 @@ export default defineNuxtConfig({
         warning: '#f2c037',
       },
     },
+  },
+  vite: {
+    define: {
+      'process.env.DEBUG': process.env.NODE_ENV === 'development',
+    },
+    plugins: [
+      pugPlugin(<any>{
+        pretty: true,
+        compilerOptions: {},
+      }),
+    ],
   },
 })

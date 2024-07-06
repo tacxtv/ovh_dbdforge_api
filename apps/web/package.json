@@ -9,8 +9,12 @@
     "start:dev": "nuxt dev"
   },
   "dependencies": {
+    "@nuxt-alt/auth": "^3.1.7",
+    "@nuxt-alt/http": "^1.7.10",
+    "@pinia/nuxt": "^0.5.1",
     "@quasar/extras": "^1.16.11",
-    "openapi-fetch": "^0.10.1",
+    "openapi-fetch": "^0.10.2",
+    "pinia": "^2.1.7",
     "quasar": "^2.16.4",
     "radash": "^12.1.0"
   },
@@ -23,6 +27,7 @@
     "@vue/language-plugin-pug": "^2.0.21",
     "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
+    "dayjs-nuxt": "^2.1.9",
     "eslint": "^9.5.0",
     "nuxt": "^3.12.2",
     "nuxt-quasar-ui": "^2.1.3",
