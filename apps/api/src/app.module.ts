@@ -13,6 +13,7 @@ import { Error } from 'mongoose'
 import { ValidationError } from 'class-validator'
 import { FactorydriveModule, FactorydriveService } from '@the-software-compagny/nestjs_module_factorydrive'
 import { AwsS3Storage } from '@the-software-compagny/nestjs_module_factorydrive-s3'
+import { CoreModule } from './core/core.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { AwsS3Storage } from '@the-software-compagny/nestjs_module_factorydrive-
     }),
     RequestContextModule,
     WikiModule.register(),
+    CoreModule.register(),
   ],
   controllers: [AppController],
   providers: [

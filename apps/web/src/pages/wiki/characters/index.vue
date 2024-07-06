@@ -9,6 +9,7 @@ q-page(style="margin: auto; max-width: 1366px;")
               q-toolbar
                 q-toolbar-title(v-text="character.name")
 </template>
+
 <script lang="ts" setup>
 const { data: charactersData } = await useHttp(`/wiki/characters`)
 const characters = charactersData.value.data
