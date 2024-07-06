@@ -3,14 +3,14 @@
   .row.q-col-gutter-md.q-mb-md
     div
       q-card.bg-secondary.full-height.content-center(flat)
-        q-btn.full-height(color="white" icon="mdi-reply" flat)
+        q-btn.full-height(color="white" to="/wiki/characters" icon="mdi-reply" flat)
     .col
       q-card.bg-primary.q-pa-md(flat)
-        div Anna
+        div(v-text="character.name")
     div
       q-card.bg-primary.q-pa-sm.full-height.content-center(flat)
         //- q-icon.q-mr-sm(name="mdi-radar" size="sm")
-        span Grand
+        span(v-text="character.height")
     div
       q-card.bg-primary.q-pa-sm.full-height.content-center(flat)
         q-icon.q-mr-sm(name="mdi-radar" size="sm")
@@ -27,18 +27,18 @@
         q-btn.full-height(color="white" flat) Voir en plus +
   .col.q-mb-md
     .row.full-height
-      .col-12.col-sm-3.q-mb-xs-md.q-mb-sm-none
+      .col-12.col-sm-3.q-mb-xs-md.q-mb-sm-none.full-height
         q-card.bg-primary.full-height.q-mr-sm-md(flat)
           div
             q-img.fit(src="/img/IconPowers_huntingHatchets.webp" fit="contain")
           q-toolbar.absolute-bottom.text-center
             q-toolbar-title Hunting Hatchets
-      .col-12.col-sm
+      .col-12.col-sm.full-height
         q-card.bg-primary.full-height(flat)
           q-card-section.q-pa-md.text-center
             .text-h6 A propos
           q-card-section.q-pa-md
-            div Une tueuse à distance capable de lancer des <b>Hachettes de chasse</b> sur les survivants pour les blesser de loin.<br><br>Ses compétences personnelles <b>Prédation</b>, <b>Instinct territorial</b> et <b>Sort : Berceuse de la Chasseuse</b> lui permettent de mettre les survivants sous pression au moyen d'une meilleure lecture de carte et de compétences de poursuite améliorées.
+            div(v-html="character.biography")
   q-card.bg-primary(flat)
     q-carousel.bg-transparent(
       v-model="slide"
@@ -75,6 +75,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+
+const { character } = defineProps(['character'])
 
 const slide = ref(1)
 </script>
