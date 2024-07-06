@@ -11,5 +11,6 @@ q-page(style="margin: auto; max-width: 1366px;")
 </template>
 
 <script lang="ts" setup>
-
+const { data } = await useHttp('/wiki/characters/la-chasseuse')
+console.log('data', data)
 </script>

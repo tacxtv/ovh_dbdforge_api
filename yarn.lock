@@ -2606,11 +2606,12 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@the-software-compagny/nestjs_module_restools@@latest":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@the-software-compagny/nestjs_module_restools/-/nestjs_module_restools-0.0.2.tgz#ff7773addea6106fda5bea8431699a0d091b5f48"
-  integrity sha512-D0xQzOviAsFnNXY1u0WKjDt4eKi5NUyXZOfQcR/WQVQYCr33J5SHUF30aM3JIO2U6ARGFd+9sx3BXjVGI8cRYw==
+"@the-software-compagny/nestjs_module_restools@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@the-software-compagny/nestjs_module_restools/-/nestjs_module_restools-0.0.6.tgz#8af79cfc5c3834cbede19bae16ab39e7f0afab5d"
+  integrity sha512-DbKBwhfU+geUri9c20qUPK1enby/aFuV79mCKa2DNkTUql1u71/2s3eP9aGHVXp2FawNfJfW2n6HXxwiSq4mdA==
   dependencies:
+    class-transformer "^0.5.1"
     dayjs "^1.11.11"
     deepmerge "^4.3.1"
     is-plain-object "^5.0.0"

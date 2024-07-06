@@ -22,6 +22,13 @@ export class Character extends AbstractSchema {
     required: true,
     unique: true,
   })
+  public slug: string
+
+  @Prop({
+    type: String,
+    required: true,
+    unique: true,
+  })
   public name: string
 
   @Prop({ type: String })

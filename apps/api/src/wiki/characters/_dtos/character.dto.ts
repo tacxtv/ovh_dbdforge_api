@@ -6,6 +6,9 @@ export class CharacterCreateDto {
   public role: number
 
   @IsString()
+  public slug: string
+
+  @IsString()
   public name: string
 
   @IsString()
