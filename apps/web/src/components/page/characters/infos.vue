@@ -1,5 +1,5 @@
 <template lang="pug">
-.col-9.flex.relative.column
+.col-12.col-sm-9.flex.relative.column
   .row.q-col-gutter-md.q-mb-md
     div
       q-card.bg-secondary.full-height.content-center(flat)
@@ -27,13 +27,13 @@
         q-btn.full-height(color="white" flat) Voir en plus +
   .col.q-mb-md
     .row.full-height
-      .col-3
-        q-card.bg-primary.full-height.q-mr-md(flat)
+      .col-12.col-sm-3.q-mb-xs-md.q-mb-sm-none
+        q-card.bg-primary.full-height.q-mr-sm-md(flat)
           div
             q-img.fit(src="/img/IconPowers_huntingHatchets.webp" fit="contain")
           q-toolbar.absolute-bottom.text-center
             q-toolbar-title Hunting Hatchets
-      .col
+      .col-12.col-sm
         q-card.bg-primary.full-height(flat)
           q-card-section.q-pa-md.text-center
             .text-h6 A propos

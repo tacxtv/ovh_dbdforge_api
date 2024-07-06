@@ -40,15 +40,15 @@ export class Character extends AbstractSchema {
   public height?: string
 
   @Prop({ type: String })
-  public dlc?: string[]
+  public dlc?: string
 
-  @Prop({ type: String })
+  @Prop({ type: [String] })
   public perks?: string[]
 
-  @Prop({ type: String })
+  @Prop({ type: Object })
   public tunables: object
 
-  @Prop({ type: String })
+  @Prop({ type: Object })
   public powerItem?: object
 }
 
