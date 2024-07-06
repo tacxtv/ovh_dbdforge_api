@@ -11,6 +11,8 @@ import { MongooseValidationFilter, RequestContextModule, DtoValidationPipe } fro
 import { APP_FILTER, APP_PIPE } from '@nestjs/core'
 import { Error } from 'mongoose'
 import { ValidationError } from 'class-validator'
+import { FactorydriveModule, FactorydriveService } from '@the-software-compagny/nestjs_module_factorydrive'
+import { AwsS3Storage } from '@the-software-compagny/nestjs_module_factorydrive-s3'
 
 @Module({
   imports: [
@@ -33,6 +35,13 @@ import { ValidationError } from 'class-validator'
         type: 'single',
         url: config.get<string>('ioredis.url'),
         options: config.get<RedisOptions>('ioredis.options'),
+      }),
+    }),
+    FactorydriveModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (config: ConfigService) => ({
+        ...config.get('factorydrive.options'),
       }),
     }),
     RequestContextModule,
@@ -60,4 +69,7 @@ import { ValidationError } from 'class-validator'
   ],
 })
 export class AppModule {
+  public constructor(storage: FactorydriveService) {
+    storage.registerDriver('s3', AwsS3Storage)
+  }
 }

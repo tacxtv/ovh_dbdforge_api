@@ -1,5 +1,6 @@
 import { MongooseModuleOptions } from "@nestjs/mongoose"
 import { SwaggerCustomOptions } from "@nestjs/swagger"
+import { StorageManagerConfig } from "@the-software-compagny/nestjs_module_factorydrive"
 import { HelmetOptions } from "helmet"
 import { RedisOptions } from "ioredis"
 
@@ -13,6 +14,9 @@ export interface ConfigInstance {
   ioredis: {
     url?: string
     options?: RedisOptions
+  }
+  factorydrive: {
+    options: StorageManagerConfig
   }
   swagger: {
     path?: string
@@ -50,6 +54,26 @@ export default (): ConfigInstance => {
         maxRetriesPerRequest: null,
         showFriendlyErrorStack: true,
         keyPrefix: (process.env['DBDFORGE_IOREDIS_KEYPREFIX'] || 'dbdforge') + ':',
+      },
+    },
+    factorydrive: {
+      options: {
+        default: 's3',
+        disks: {
+          s3: {
+            driver: 's3',
+            config: {
+              credentials: {
+                accessKeyId: '******',
+                secretAccessKey: '******',
+              },
+              endpoint: 'http://minio:9000/',
+              region: 'us-east-1',
+              bucket: 'example',
+              forcePathStyle: true,
+            },
+          },
+        },
       },
     },
     swagger: {
