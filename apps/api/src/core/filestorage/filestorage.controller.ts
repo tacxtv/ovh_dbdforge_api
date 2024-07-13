@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, ParseFilePipe, Post, Query, Res, UploadedFile, UseInterceptors } from '@nestjs/common'
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseFilePipe, Patch, Post, Query, Res, UploadedFile, UseInterceptors } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Response } from 'express'
 import { AbstractController } from '~/_common/_abstracts/abstract.controller'
@@ -57,6 +57,14 @@ export class FilestorageController extends AbstractController {
     return res.status(HttpStatus.OK).json({
       statusCode: HttpStatus.OK,
       data: await this._service.deleteFile(path),
+    })
+  }
+
+  @Patch('move')
+  public async move(@Res() res: Response, @Body() body: any) {
+    return res.status(HttpStatus.OK).json({
+      statusCode: HttpStatus.OK,
+      data: await this._service.moveFile(body.source, body.target),
     })
   }
 }
