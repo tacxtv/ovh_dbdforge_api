@@ -1,7 +1,7 @@
 <template lang="pug">
 .col-12.col-sm-3
   q-card.bg-primary.q-mb-md(flat)
-    q-img(src="/img/New_Store_Huntress.webp")
+    q-img(:src="getPicturePath(character.picture)")
       .absolute-bottom.full-width
         q-toolbar
           q-toolbar-title(v-text="character.name")
@@ -16,5 +16,9 @@
 </template>
 
 <script lang="ts" setup>
+import useFilestorage from '~/composables/useFilestorage'
+
+const { getPicturePath } = useFilestorage()
+
 const { character } = defineProps(['character'])
 </script>
