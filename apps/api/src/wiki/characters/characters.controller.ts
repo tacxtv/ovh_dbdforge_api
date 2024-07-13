@@ -1,12 +1,12 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Res } from "@nestjs/common"
 import { ApiTags } from "@nestjs/swagger"
-import { Character } from "./_schemas/character.schema"
-import { CharactersService } from "./characters.service"
-import { PartialProjectionType } from "~/_common/_types/partial-projection.type"
 import { FilterSchema, FilterSearchOptions, SearchFilterOptions, SearchFilterSchema } from "@the-software-compagny/nestjs_module_restools"
 import { Response } from "express"
-import { CharacterCreateDto, CharacterUpdateDto } from "./_dtos/character.dto"
 import { AbstractController } from "~/_common/_abstracts/abstract.controller"
+import { PartialProjectionType } from "~/_common/_types/partial-projection.type"
+import { CharacterCreateDto, CharacterUpdateDto } from "./_dtos/character.dto"
+import { Character } from "./_schemas/character.schema"
+import { CharactersService } from "./characters.service"
 
 @ApiTags('characters')
 @Controller('characters')
@@ -27,6 +27,7 @@ export class CharactersController extends AbstractController {
     @Res() res: Response,
   ) {
     const [data, total] = await this._service.findAndCount(filters, this.projection)
+
     return res.status(HttpStatus.OK).json({
       statusCode: HttpStatus.OK,
       data,
