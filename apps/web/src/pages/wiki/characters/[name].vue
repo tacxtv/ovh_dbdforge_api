@@ -1,5 +1,6 @@
 <template lang="pug">
 q-page(style="margin: auto; max-width: 1366px;")
+  q-custom-layout-default-breadcrumbs
   .row.q-col-gutter-md
     q-custom-page-characters-avatar(:character="character")
     q-custom-page-characters-infos(:character="character")
@@ -13,6 +14,6 @@ q-page(style="margin: auto; max-width: 1366px;")
 <script lang="ts" setup>
 const $route = useRoute()
 
-const { data: characterData } = await useHttp(`/wiki/characters/${$route.params.name}`)
+const { data: characterData } = await useHttp<any>(`/wiki/characters/${$route.params.name}`)
 const character = characterData.value.data
 </script>

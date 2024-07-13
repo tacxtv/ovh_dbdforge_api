@@ -12,9 +12,16 @@ q-drawer.q-py-md.q-pl-md(
           q-btn.rounded-borders(icon="mdi-twitch" color="white" flat stretch)
       q-card.bg-primary.full-height.overflow-auto(flat)
         q-list
-          q-item.rounded-borders(v-for="i in 5" clickable)
+          q-item.rounded-borders(
+            v-for="(entry, key) in entries"
+            :to="entry.to"
+            :key="key"
+            active-class="text-amber"
+            clickable
+          )
+            q-tooltip.text-body2(anchor="center right" self="center middle" v-text="entry.label")
             q-item-section(avatar)
-              q-icon(name="mdi-square-rounded")
+              q-icon(:name="entry.icon || 'mdi-square-rounded'")
         q-space
         q-list
 </template>
@@ -23,4 +30,9 @@ q-drawer.q-py-md.q-pl-md(
 import { inject } from 'vue'
 
 const drawer = inject('drawer')
+
+const entries = [
+  { icon: 'mdi-home', label: 'Accueil', to: '/' },
+  { icon: 'mdi-earth', label: 'Wiki', to: '/wiki' },
+]
 </script>

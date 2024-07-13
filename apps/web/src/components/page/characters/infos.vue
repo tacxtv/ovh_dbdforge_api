@@ -27,7 +27,7 @@
         q-btn.full-height(color="white" flat) Voir en plus +
   .col.q-mb-md
     .row.full-height
-      .col-12.col-sm-3.q-mb-xs-md.q-mb-sm-none.full-height
+      .col-12.col-sm-3.q-mb-xs-md.q-mb-sm-none(:class="{'full-height': $q.screen.width > 700}")
         q-card.bg-primary.full-height.q-mr-sm-md(flat)
           div
             q-img.fit(src="/img/IconPowers_huntingHatchets.webp" fit="contain")
@@ -76,6 +76,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
+const $q = useQuasar()
 const { character } = defineProps(['character'])
 
 const slide = ref(1)

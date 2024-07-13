@@ -51,6 +51,7 @@ export default defineNuxtConfig({
         warning: '#f2c037',
       },
     },
+    plugins: ['Dialog', 'Notify'],
   },
   vite: {
     define: {

@@ -29,4 +29,6 @@ import { useQuasar } from 'quasar'
 
 const $q = useQuasar()
 const drawer = inject('drawer')
+
+const search = ref('')
 </script>
