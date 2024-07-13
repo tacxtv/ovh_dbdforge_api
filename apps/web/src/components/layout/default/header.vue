@@ -15,7 +15,7 @@ q-header.q-pa-md.bg-white(:style="{background: $q.dark.isActive ? 'var(--q-dark-
             q-input.block.full-width(
               v-model="search"
               placeholder="Rechercher un personnage, un item, ..." color="white"
-              dense filled
+              dense filled dark
             )
           q-toolbar.q-gutter-sm
             q-space

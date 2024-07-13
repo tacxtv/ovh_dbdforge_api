@@ -5,22 +5,22 @@
       q-card.bg-secondary.full-height.content-center(flat)
         q-btn.full-height(color="white" to="/wiki/characters" icon="mdi-reply" flat)
     .col
-      q-card.bg-primary.q-pa-md(flat)
+      q-card.bg-primary.q-pa-md.text-white(flat)
         div(v-text="character.name")
     div
-      q-card.bg-primary.q-pa-sm.full-height.content-center(flat)
+      q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
         //- q-icon.q-mr-sm(name="mdi-radar" size="sm")
         span(v-text="character.height")
     div
-      q-card.bg-primary.q-pa-sm.full-height.content-center(flat)
+      q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
         q-icon.q-mr-sm(name="mdi-radar" size="sm")
         span 20m
     div
-      q-card.bg-primary.q-pa-sm.full-height.content-center(flat)
+      q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
         q-icon.q-mr-sm(name="mdi-run-fast" size="sm")
         span 4.4 m/s
     div
-      q-card.bg-primary.q-pa-sm.full-height.content-center(flat)
+      q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
         q-icon(name="mdi-gender-female" size="md")
     div
       q-card.bg-warning.full-height.content-center(flat)
@@ -28,13 +28,13 @@
   .col.q-mb-md
     .row.full-height
       .col-12.col-sm-3.q-mb-xs-md.q-mb-sm-none(:class="{'full-height': $q.screen.width > 700}")
-        q-card.bg-primary.full-height.q-mr-sm-md(flat)
+        q-card.bg-primary.full-height.q-mr-sm-md.text-white(flat)
           div
             q-img.fit(src="/img/IconPowers_huntingHatchets.webp" fit="contain")
           q-toolbar.absolute-bottom.text-center
             q-toolbar-title Hunting Hatchets
       .col-12.col-sm.full-height
-        q-card.bg-primary.full-height(flat)
+        q-card.bg-primary.full-height.text-white(flat)
           q-card-section.q-pa-md.text-center
             .text-h6 A propos
           q-card-section.q-pa-md

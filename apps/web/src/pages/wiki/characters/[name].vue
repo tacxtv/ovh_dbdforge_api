@@ -5,7 +5,7 @@ q-page(style="margin: auto; max-width: 1366px;")
     q-custom-page-characters-avatar(:character="character.data")
     q-custom-page-characters-infos(:character="character.data")
     .col
-      q-card.bg-primary(flat)
+      q-card.bg-primary.text-white(flat)
         q-card-section.q-pa-md.text-center
           .text-h6 Histoire
         q-card-section.q-pa-md(v-html="character.data.story")
