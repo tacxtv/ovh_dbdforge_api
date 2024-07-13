@@ -23,6 +23,9 @@ export default defineNuxtConfig({
     'dayjs-nuxt',
     '@nuxt/devtools',
   ],
+  appConfig: {
+    baseURL: process.env.DBDFORGE_API_URL,
+  },
   http: {
     debug: process.env.NODE_ENV === 'development',
     browserBaseURL: process.env.DBDFORGE_API_URL,
