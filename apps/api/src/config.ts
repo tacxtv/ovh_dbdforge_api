@@ -64,12 +64,12 @@ export default (): ConfigInstance => {
             driver: 's3',
             config: {
               credentials: {
-                accessKeyId: '******',
-                secretAccessKey: '******',
+                accessKeyId: 'ovh_dbdforge',
+                secretAccessKey: 'ovh_dbdforge',
               },
-              endpoint: 'http://minio:9000/',
+              endpoint: 'http://mactacx:9000/',
               region: 'us-east-1',
-              bucket: 'example',
+              bucket: 'dbdforge',
               forcePathStyle: true,
             },
           },
