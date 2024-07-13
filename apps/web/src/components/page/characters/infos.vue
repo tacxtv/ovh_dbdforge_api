@@ -8,20 +8,22 @@
       q-card.bg-primary.q-pa-md.text-white(flat)
         div(v-text="character.name")
     div
-      q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
-        //- q-icon.q-mr-sm(name="mdi-radar" size="sm")
-        span(v-text="character.height")
+      nuxt-link(:to="'/wiki/characters/?filters[:height]=' + character.height")
+        q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
+          //- q-icon.q-mr-sm(name="mdi-radar" size="sm")
+          span(v-text="character.height")
     div
       q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
         q-icon.q-mr-sm(name="mdi-radar" size="sm")
-        span 20m
+        span 20m*
     div
       q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
         q-icon.q-mr-sm(name="mdi-run-fast" size="sm")
-        span 4.4 m/s
+        span 4.4 m/s*
     div
       q-card.bg-primary.q-pa-sm.full-height.content-center.text-white(flat)
         q-icon(name="mdi-gender-female" size="md")
+        q-icon(name="mdi-gender-male" size="md")
     div
       q-card.bg-warning.full-height.content-center(flat)
         q-btn.full-height(color="white" flat) Voir en plus +

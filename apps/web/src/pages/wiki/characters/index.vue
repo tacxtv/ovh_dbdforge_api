@@ -12,8 +12,17 @@ q-page(style="margin: auto; max-width: 1366px;")
 </template>
 
 <script lang="ts" setup>
+import { pick } from 'radash'
 import useFilestorage from '~/composables/useFilestorage'
 
+const route = useRoute()
 const { getPicturePath } = useFilestorage()
-const { data: characters } = await useHttp(`/wiki/characters`)
+
+const { data: characters } = await useHttp(`/wiki/characters`, {
+  query: {
+    ...pick(route.query, Object.keys(route.query).filter((key) => {
+      return /^filters/.test(key)
+    })),
+  }
+})
 </script>

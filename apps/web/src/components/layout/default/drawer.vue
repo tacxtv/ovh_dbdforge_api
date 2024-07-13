@@ -10,7 +10,7 @@ q-drawer.q-py-md.q-pl-md(
       q-card.bg-primary.q-mb-md(flat)
         q-toolbar.q-px-none
           q-btn.rounded-borders(icon="mdi-twitch" color="white" flat stretch)
-      q-card.bg-primary.full-height.overflow-auto(flat)
+      q-card.bg-primary.flex.column.full-height.overflow-auto.text-white(flat)
         q-list
           q-item.rounded-borders(
             v-for="(entry, key) in entries"
@@ -19,11 +19,19 @@ q-drawer.q-py-md.q-pl-md(
             active-class="text-amber"
             clickable
           )
-            q-tooltip.text-body2(anchor="center right" self="center middle" v-text="entry.label")
+            q-tooltip.text-body2(anchor="center right" self="center left" v-text="entry.label")
             q-item-section(avatar)
               q-icon(:name="entry.icon || 'mdi-square-rounded'")
         q-space
         q-list
+          q-item.rounded-borders(
+            to="/admin"
+            active-class="text-amber"
+            clickable
+          )
+            q-tooltip.text-body2(anchor="center right" self="center left") Administration
+            q-item-section(avatar)
+              q-icon(name="mdi-square-rounded")
 </template>
 
 <script lang="ts" setup>
