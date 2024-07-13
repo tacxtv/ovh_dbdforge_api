@@ -14,6 +14,7 @@ export class CharactersController extends AbstractController {
   private readonly projection: PartialProjectionType<Character> = {
     name: 1,
     slug: 1,
+    picture: 1,
   }
 
   public constructor(private readonly _service: CharactersService) {

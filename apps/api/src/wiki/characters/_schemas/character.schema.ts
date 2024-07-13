@@ -32,6 +32,9 @@ export class Character extends AbstractSchema {
   public name: string
 
   @Prop({ type: String })
+  public picture?: string
+
+  @Prop({ type: String })
   public biography?: string
 
   @Prop({ type: String })

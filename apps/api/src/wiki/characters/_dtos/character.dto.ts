@@ -1,5 +1,5 @@
 import { ApiProperty, PartialType } from "@nestjs/swagger";
-import { IsArray, IsMongoId, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsArray, IsMimeType, IsMongoId, IsNumber, IsOptional, IsString, Matches } from "class-validator";
 
 export class CharacterCreateDto {
   @IsNumber()
@@ -10,6 +10,11 @@ export class CharacterCreateDto {
 
   @IsString()
   public name: string
+
+  @IsString()
+  @Matches(/[\w]+:[\/|.|\w|\s|-]+.jpg|gif|png/i)
+  //TODO: check if image mime type valid
+  public picture: string
 
   @IsString()
   public biography: string
